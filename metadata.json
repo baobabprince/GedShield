@@ -1,0 +1,7 @@
+{
+  "name": "GedShield",
+  "description": "עורך ומסדר עצי משפחה אינטראקטיבי. טען קבצי גנאלוגיה (GEDCOM), בצע מחיקות דמויות או ענפים, אנונימיזציה לקבוצות או יחידים, והוסף קרובים חדשים בעזרת סימון בריבוע אינטואיטיבי על גבי העץ.",
+  "requestFramePermissions": [],
+  "prompt": "",
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
