@@ -1,22 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
+@import "./baobab-tokens.css";
 
-/* Custom Scrollbar Styles for better UX on Dashboards */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(31, 41, 55, 0.5);
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(75, 85, 99, 0.8);
-  border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(107, 114, 128, 1);
+@theme {
+  --font-sans: "Heebo", system-ui, sans-serif;
+  --color-cream: #f8f7f3;
+  --color-sage: #456352;
+  --color-clay: #ac694c;
+  --color-ink: #29392f;
+  --color-muted: #82877e;
+  --color-line: #e7e8e0;
 }
 
-/* Ensure smooth scrolling on touch devices */
-.overflow-y-auto {
-  -webkit-overflow-scrolling: touch;
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
+
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #edf1e9; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #c5b8a0; border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a89a7e; }
+.overflow-y-auto { -webkit-overflow-scrolling: touch; }
+::selection { background: #e3d3bd; color: var(--text); }

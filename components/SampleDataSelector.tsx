@@ -26,14 +26,14 @@ const SampleDataSelector: React.FC<SampleDataSelectorProps> = ({ onSelect, lang 
 
     return (
         <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-black text-gray-500 mb-1">
+            <span className="text-[10px] font-black text-[#82877e] mb-1">
                 {t.chooseSampleTitle}
             </span>
             {sampleData.map((sample: Sample) => (
                 <button
                     key={sample.name}
                     onClick={() => onSelect(sample.content, sample.type, getSampleName(sample.name))}
-                    className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-medium text-cyan-200 bg-gray-700 bg-opacity-30 rounded-md hover:bg-gray-700/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500 transition-colors duration-200 ${
+                    className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-medium text-cyan-200 bg-[#e7e8e0] bg-opacity-30 rounded-md hover:bg-[#e7e8e0]/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-[#b47e59] transition-colors duration-200 ${
                         lang === 'he' ? 'justify-start text-right' : 'justify-start text-left'
                     }`}
                 >

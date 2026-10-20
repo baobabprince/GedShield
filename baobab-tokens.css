@@ -1,0 +1,28 @@
+/**
+ * baobab-tokens.css — anafim (ענפים) shared design tokens
+ */
+:root {
+  --bg: #f8f7f3;
+  --paper: #ffffff;
+  --paper-warm: #fefefb;
+  --canvas: #fafcf7;
+  --text: #29392f;
+  --muted: #82877e;
+  --subtle: #a4a79f;
+  --line: #e7e8e0;
+  --line-strong: #d6e2cd;
+  --green: #456352;
+  --green-deep: #315b48;
+  --green-light: #edf1e9;
+  --green-active: #e9f0e5;
+  --clay: #ac694c;
+  --clay-dark: #93583f;
+  --clay-light: #f8eee5;
+  --shadow: 0 4px 18px #29392f14;
+  --shadow-sm: 0 2px 7px #344d2508;
+  --font-sans: "Heebo", system-ui, -apple-system, Arial, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --focus-ring: #b47e59;
+}

@@ -24,10 +24,10 @@ const GraphLegend: React.FC<GraphLegendProps> = ({ isGedcom, isAdvancedMode, has
 
     return (
         <div 
-            className={`absolute top-4 ${lang === 'he' ? 'right-4 text-right' : 'left-4 text-left'} bg-gray-950/90 backdrop-blur-md p-4 rounded-xl border border-gray-800 shadow-2xl z-10`} 
+            className={`absolute top-4 ${lang === 'he' ? 'right-4 text-right' : 'left-4 text-left'} bg-[#f8f7f3]/90 backdrop-blur-md p-4 rounded-xl border border-[#e7e8e0] shadow-2xl z-10`} 
             dir={lang === 'he' ? 'rtl' : 'ltr'}
         >
-            <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-800 pb-1.5">{t.legendTitle}</h4>
+            <h4 className="text-xs font-black text-[#82877e] uppercase tracking-widest mb-3 border-b border-[#e7e8e0] pb-1.5">{t.legendTitle}</h4>
             <div className="flex flex-col gap-2">
                 {items.map(item => (
                     <div key={item.label} className="flex items-center gap-2.5">
@@ -36,9 +36,9 @@ const GraphLegend: React.FC<GraphLegendProps> = ({ isGedcom, isAdvancedMode, has
                         ) : item.type === 'shape-hollow' ? (
                             <div className="w-3.5 h-3.5 rounded-full border-2 border-blue-400 bg-transparent"></div>
                         ) : (
-                            <div className="w-3.5 h-3.5 rounded-sm shadow-inner border border-gray-800/40" style={{ background: item.color }}></div>
+                            <div className="w-3.5 h-3.5 rounded-sm shadow-inner border border-[#e7e8e0]/40" style={{ background: item.color }}></div>
                         )}
-                        <span className="text-[10px] text-gray-300 font-bold">{item.label}</span>
+                        <span className="text-[10px] text-[#657157] font-bold">{item.label}</span>
                     </div>
                 ))}
             </div>

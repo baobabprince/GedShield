@@ -137,13 +137,13 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
   return (
     <Card 
-      className={`flex flex-col h-full max-h-full overflow-hidden shadow-2xl transition-colors duration-200 border-gray-800 ${
-        isLightMode ? 'bg-white border-gray-200 text-gray-800' : 'bg-gray-900 border-gray-800 text-gray-200'
+      className={`flex flex-col h-full max-h-full overflow-hidden shadow-2xl transition-colors duration-200 border-[#e7e8e0] ${
+        isLightMode ? 'bg-white border-gray-200 text-gray-800' : 'bg-[#fefefb] border-[#e7e8e0] text-[#29392f]'
       }`} 
       dir={lang === 'he' ? 'rtl' : 'ltr'}
     >
       {/* File Action Controls */}
-      <div className={`p-4 border-b flex-shrink-0 ${isLightMode ? 'border-gray-200 bg-gray-50' : 'border-gray-800 bg-gray-950/60'}`}>
+      <div className={`p-4 border-b flex-shrink-0 ${isLightMode ? 'border-gray-200 bg-gray-50' : 'border-[#e7e8e0] bg-[#f8f7f3]/60'}`}>
         <div className="flex flex-col gap-2.5">
           <input 
             type="file" 
@@ -155,7 +155,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           <Button 
             onClick={() => fileInputRef.current?.click()} 
             icon={<UploadIcon className="w-4 h-4" />}
-            className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold w-full rounded-xl transition-all shadow-md active:scale-98"
+            className="bg-[#ac694c] hover:bg-[#ac694c] text-[#29392f] font-bold w-full rounded-xl transition-all shadow-md active:scale-98"
           >
             {t.loadGedcomFile}
           </Button>
@@ -167,7 +167,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               className={`font-black w-full rounded-xl transition-all shadow-md active:scale-98 border ${
                 isLightMode 
                   ? 'bg-white hover:bg-gray-50 text-gray-700 border-gray-300 hover:border-emerald-500' 
-                  : 'bg-gray-850 hover:bg-gray-800 border-gray-800 hover:border-emerald-500/50 text-gray-250 hover:text-white'
+                  : 'bg-gray-850 hover:bg-[#edf1e9] border-[#e7e8e0] hover:border-emerald-500/50 text-gray-250 hover:text-[#29392f]'
               }`}
             >
               {t.exportGedcomFile}
@@ -177,16 +177,16 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           {hasGraphData && (
             <div className="relative mt-1">
               <div className={`absolute inset-y-0 ${lang === 'he' ? 'right-3' : 'left-3'} flex items-center pointer-events-none`}>
-                <SearchIcon className="h-4 w-4 text-gray-500" />
+                <SearchIcon className="h-4 w-4 text-[#82877e]" />
               </div>
               <input
                 type="text"
-                className={`block w-full py-2 border rounded-xl focus:ring-1 focus:ring-cyan-500 text-xs font-bold transition-all ${
+                className={`block w-full py-2 border rounded-xl focus:ring-1 focus:ring-[#b47e59] text-xs font-bold transition-all ${
                   lang === 'he' ? 'pr-9 pl-3 text-right' : 'pl-9 pr-3 text-left'
                 } ${
                   isLightMode 
                     ? 'border-gray-350 bg-gray-50 text-gray-800 placeholder-gray-500' 
-                    : 'border-gray-800 bg-gray-950 text-gray-200 placeholder-gray-600'
+                    : 'border-[#e7e8e0] bg-[#f8f7f3] text-[#29392f] placeholder-gray-600'
                 }`}
                 placeholder={t.searchPlaceholder}
                 value={searchQuery}
@@ -196,15 +196,15 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 <div className={`absolute mt-1.5 w-full border rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] z-50 overflow-hidden divide-y ${
                   isLightMode 
                     ? 'bg-white border-gray-200 divide-gray-100' 
-                    : 'bg-gray-950 border-gray-800 divide-gray-900'
+                    : 'bg-[#f8f7f3] border-[#e7e8e0] divide-gray-900'
                 }`}>
                   {filteredNodes.map(node => (
                     <button 
                       key={node.id} 
-                      className={`w-full px-4 py-2 text-xs font-semibold hover:bg-cyan-950/20 hover:text-cyan-400 truncate block transition-all ${
+                      className={`w-full px-4 py-2 text-xs font-semibold hover:bg-[#edf1e9] hover:text-[#456352] truncate block transition-all ${
                         lang === 'he' ? 'text-right' : 'text-left'
                       } ${
-                        isLightMode ? 'text-gray-700' : 'text-gray-400'
+                        isLightMode ? 'text-gray-700' : 'text-[#82877e]'
                       }`}
                       onClick={() => { onNodeSelect(node); setSearchQuery(''); }}
                     >
@@ -229,13 +229,13 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         {selectedNode && selectedNode.type === 'person' && (
           <div className="animate-in slide-in-from-top-3 duration-200">
             <div className="flex justify-between items-center mb-1.5">
-              <span className="text-[10px] font-black text-cyan-500 uppercase tracking-widest flex items-center gap-1">
+              <span className="text-[10px] font-black text-[#456352] uppercase tracking-widest flex items-center gap-1">
                 <Users className="w-3.5 h-3.5" />
                 <span>{t.memberDetailsTitle}</span>
               </span>
               <button 
                 onClick={onClearSelection} 
-                className="text-gray-500 hover:text-gray-400 transition-colors p-1"
+                className="text-[#82877e] hover:text-[#82877e] transition-colors p-1"
                 title={t.closeMemberDetails}
               >
                 <X className="w-4 h-4" />
@@ -243,10 +243,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             </div>
             
             <div className={`p-3.5 rounded-2xl border shadow-inner ${
-              isLightMode ? 'bg-cyan-50/20 border-cyan-100' : 'bg-cyan-950/20 border-cyan-900/40'
+              isLightMode ? 'bg-cyan-50/20 border-cyan-100' : 'bg-[#edf1e9] border-cyan-900/40'
             }`}>
               <div className="flex items-center justify-between mb-2">
-                <h3 className="font-extrabold text-cyan-500 truncate text-sm">
+                <h3 className="font-extrabold text-[#456352] truncate text-sm">
                   {selectedNode.name || selectedNode.id}
                 </h3>
                 <span className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${selectedNode.gender === 'F' ? 'bg-pink-900/30 text-pink-400 border border-pink-900/50' : 'bg-blue-900/30 text-blue-400 border border-blue-900/50'}`}>
@@ -257,7 +257,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               <div className={`flex items-center justify-between mb-3 text-xs p-2 rounded-xl border ${
                 isLightMode ? 'bg-cyan-50/40 border-cyan-100/50' : 'bg-cyan-950/45 border-cyan-900/20'
               }`}>
-                <span className="text-[10px] font-bold text-cyan-500">{t.lifeStatus}:</span>
+                <span className="text-[10px] font-bold text-[#456352]">{t.lifeStatus}:</span>
                 <div className="flex items-center gap-1.5">
                   <span className={`text-[10px] font-black ${selectedNode.isDeceased ? 'text-red-400' : 'text-emerald-400'}`}>
                     {selectedNode.isDeceased ? t.statusDeceased : t.statusAlive}
@@ -278,7 +278,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 {pendingDeletions.has(selectedNode.id) ? (
                   <button
                     onClick={() => onUnstageNodes(selectedNode.id)}
-                    className="flex justify-center items-center gap-1.5 bg-gray-800 hover:bg-gray-750 text-gray-300 p-2 rounded-xl text-[10px] font-bold border border-gray-700 transition-all cursor-pointer"
+                    className="flex justify-center items-center gap-1.5 bg-[#edf1e9] hover:bg-gray-750 text-[#657157] p-2 rounded-xl text-[10px] font-bold border border-[#e7e8e0] transition-all cursor-pointer"
                   >
                     <X className="w-3 h-3" />
                     <span>{t.cancelDelete}</span>
@@ -296,7 +296,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 {pendingAnonymizations.has(selectedNode.id) ? (
                   <button
                     onClick={() => onUnstageNodes(selectedNode.id)}
-                    className="flex justify-center items-center gap-1.5 bg-gray-800 hover:bg-gray-750 text-gray-300 p-2 rounded-xl text-[10px] font-bold border border-gray-700 transition-all cursor-pointer"
+                    className="flex justify-center items-center gap-1.5 bg-[#edf1e9] hover:bg-gray-750 text-[#657157] p-2 rounded-xl text-[10px] font-bold border border-[#e7e8e0] transition-all cursor-pointer"
                   >
                     <X className="w-3 h-3" />
                     <span>{t.cancelAnonymization}</span>
@@ -313,7 +313,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
                 {/* Advanced group staging selection */}
                 <div className="col-span-2 mt-2.5 pt-2.5 border-t border-cyan-950/25 grid grid-cols-2 gap-1.5">
-                  <span className={`col-span-2 text-[9px] font-black text-gray-500`}>
+                  <span className={`col-span-2 text-[9px] font-black text-[#82877e]`}>
                     {t.groupStagingTitle}:
                   </span>
                   
@@ -349,14 +349,14 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               <div className="mt-3.5 space-y-2 border-t pt-3 border-cyan-950/25">
                 {connections.parents.length > 0 && (
                   <div className="flex flex-col gap-1">
-                    <span className="text-[10px] text-gray-500 font-bold">{t.parents}:</span>
+                    <span className="text-[10px] text-[#82877e] font-bold">{t.parents}:</span>
                     <div className="flex flex-wrap gap-1">
                       {connections.parents.map(parent => (
                         <button
                           key={parent.id}
                           onClick={() => onNodeSelect(parent)}
-                          className={`text-[9px] px-2 py-0.5 rounded-lg hover:underline text-cyan-400 border cursor-pointer ${
-                            isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-gray-900 border-gray-800'
+                          className={`text-[9px] px-2 py-0.5 rounded-lg hover:underline text-[#456352] border cursor-pointer ${
+                            isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-[#fefefb] border-[#e7e8e0]'
                           }`}
                         >
                           {parent.name || parent.id}
@@ -368,14 +368,14 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
                 {connections.spouses.length > 0 && (
                   <div className="flex flex-col gap-1">
-                    <span className="text-[10px] text-gray-500 font-bold">{t.spouse}:</span>
+                    <span className="text-[10px] text-[#82877e] font-bold">{t.spouse}:</span>
                     <div className="flex flex-wrap gap-1">
                       {connections.spouses.map(spouse => (
                         <button
                           key={spouse.id}
                           onClick={() => onNodeSelect(spouse)}
                           className={`text-[9px] px-2 py-0.5 rounded-lg hover:underline text-orange-400 border cursor-pointer ${
-                            isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-gray-900 border-gray-800'
+                            isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-[#fefefb] border-[#e7e8e0]'
                           }`}
                         >
                           {spouse.name || spouse.id}
@@ -387,14 +387,14 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
                 {connections.children.length > 0 && (
                   <div className="flex flex-col gap-1">
-                    <span className="text-[10px] text-gray-500 font-bold">{t.children}:</span>
+                    <span className="text-[10px] text-[#82877e] font-bold">{t.children}:</span>
                     <div className="flex flex-wrap gap-2 max-h-20 overflow-y-auto custom-scrollbar">
                       {connections.children.map(child => (
                         <button
                           key={child.id}
                           onClick={() => onNodeSelect(child)}
-                          className={`text-[9px] px-2 py-0.5 rounded-lg hover:underline text-cyan-400 border cursor-pointer ${
-                            isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-gray-900 border-gray-800'
+                          className={`text-[9px] px-2 py-0.5 rounded-lg hover:underline text-[#456352] border cursor-pointer ${
+                            isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-[#fefefb] border-[#e7e8e0]'
                           }`}
                         >
                           {child.name || child.id}
@@ -411,10 +411,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         {/* BULK PRIVACY & CLEANUP CARD */}
         {hasGraphData && graphData && (
           <div className={`border rounded-2xl p-4 space-y-4 transition-colors ${
-            isLightMode ? 'bg-gray-50/50 border-gray-200' : 'bg-gray-950/40 border-gray-800/80 hover:border-gray-750'
+            isLightMode ? 'bg-gray-50/50 border-gray-200' : 'bg-[#f8f7f3]/40 border-[#e7e8e0]/80 hover:border-gray-750'
           }`}>
-            <span className="text-xs font-black flex items-center gap-1.5 border-b pb-2 border-gray-800/30">
-              <Layers className="w-4 h-4 text-cyan-500" />
+            <span className="text-xs font-black flex items-center gap-1.5 border-b pb-2 border-[#e7e8e0]/30">
+              <Layers className="w-4 h-4 text-[#456352]" />
               <span>{t.bulkActionsTitle}</span>
             </span>
 
@@ -457,7 +457,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             </div>
 
             {/* 2. LIVING PEOPLE BULK OPTIONS */}
-            <div className={`space-y-2 pt-2.5 border-t ${isLightMode ? 'border-gray-200' : 'border-gray-800/50'}`}>
+            <div className={`space-y-2 pt-2.5 border-t ${isLightMode ? 'border-gray-200' : 'border-[#e7e8e0]/50'}`}>
               <div className="flex flex-col gap-0.5">
                 <span className="text-[11px] font-black">{t.livingPeopleTitle}:</span>
                 <span className={`text-[10px] leading-relaxed ${isLightMode ? 'text-gray-600' : 'text-gray-550'}`}>
@@ -501,10 +501,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         )}
 
         {/* 2. PLANNED ACTIONS / STAGING CONTROL PANEL SECTION */}
-        <div className={`border rounded-2xl p-4 ${isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-gray-950/60 border-gray-800'}`}>
+        <div className={`border rounded-2xl p-4 ${isLightMode ? 'bg-gray-50 border-gray-200' : 'bg-[#f8f7f3]/60 border-[#e7e8e0]'}`}>
           <div className="flex justify-between items-center mb-3 flex-wrap gap-1.5">
             <span className="text-xs font-black flex items-center gap-1.5">
-              <FileText className="w-4 h-4 text-cyan-500" />
+              <FileText className="w-4 h-4 text-[#456352]" />
               <span>{t.plannedChangesTitle}</span>
             </span>
             <div className="flex items-center gap-2">
@@ -520,7 +520,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 <button 
                   onClick={onClearStaged}
                   className={`text-[10px] px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
-                    isLightMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-700' : 'bg-gray-800 hover:bg-gray-700 text-gray-400'
+                    isLightMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-700' : 'bg-[#edf1e9] hover:bg-[#e7e8e0] text-[#82877e]'
                   }`}
                 >
                   {t.clearAll}
@@ -542,13 +542,13 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                       const node = graphData?.nodes.find(n => n.id === id);
                       const displayName = node?.name || id;
                       return (
-                        <div key={id} className={`flex justify-between items-center px-2 py-1.5 rounded-lg text-[10px] font-semibold text-gray-300 border ${
-                          isLightMode ? 'bg-red-50/50 border-red-100Text text-gray-700' : 'bg-red-950/10 border-red-900/20 text-gray-300'
+                        <div key={id} className={`flex justify-between items-center px-2 py-1.5 rounded-lg text-[10px] font-semibold text-[#657157] border ${
+                          isLightMode ? 'bg-red-50/50 border-red-100Text text-gray-700' : 'bg-red-950/10 border-red-900/20 text-[#657157]'
                         }`}>
                           <span className="truncate max-w-[140px] text-red-400 font-bold">{displayName}</span>
                           <button 
                             onClick={() => onUnstageNodes(id)}
-                            className="text-gray-500 hover:text-gray-400 transition-colors cursor-pointer"
+                            className="text-[#82877e] hover:text-[#82877e] transition-colors cursor-pointer"
                           >
                             <X className="w-3.5 h-3.5" />
                           </button>
@@ -571,12 +571,12 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                       const displayName = node?.name || id;
                       return (
                         <div key={id} className={`flex justify-between items-center px-2 py-1.5 rounded-lg text-[10px] font-semibold border ${
-                          isLightMode ? 'bg-amber-50/50 border-amber-100 text-gray-700' : 'bg-amber-950/10 border-amber-900/20 text-gray-300'
+                          isLightMode ? 'bg-amber-50/50 border-amber-100 text-gray-700' : 'bg-amber-950/10 border-amber-900/20 text-[#657157]'
                         }`}>
                           <span className="truncate max-w-[140px] text-amber-500 font-bold">{displayName}</span>
                           <button 
                             onClick={() => onUnstageNodes(id)}
-                            className="text-gray-500 hover:text-gray-400 transition-colors cursor-pointer"
+                            className="text-[#82877e] hover:text-[#82877e] transition-colors cursor-pointer"
                           >
                             <X className="w-3.5 h-3.5" />
                           </button>
@@ -588,10 +588,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               )}
 
               {/* STAGING COMMIT CONTROLLER BUTTON */}
-              <div className={`pt-2 border-t ${isLightMode ? 'border-gray-200' : 'border-gray-800'}`}>
+              <div className={`pt-2 border-t ${isLightMode ? 'border-gray-200' : 'border-[#e7e8e0]'}`}>
                 <button
                   onClick={onApplyPendingChanges}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl shadow-[0_4px_15px_rgba(16,185,129,0.25)] transition-all hover:scale-[1.01] active:scale-95 duration-100 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-[#29392f] font-extrabold text-xs py-2.5 px-4 rounded-xl shadow-[0_4px_15px_rgba(16,185,129,0.25)] transition-all hover:scale-[1.01] active:scale-95 duration-100 cursor-pointer"
                 >
                   <Check className="w-4 h-4" />
                   <span>{t.applyChanges}</span>
@@ -600,10 +600,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             </div>
           ) : (
             <div className={`py-5 text-center flex flex-col items-center justify-center border rounded-xl ${
-              isLightMode ? 'border-gray-200 bg-white' : 'border-gray-800/40 bg-gray-900/40'
+              isLightMode ? 'border-gray-200 bg-white' : 'border-[#e7e8e0]/40 bg-[#fefefb]/40'
             }`}>
-              <ShieldAlert className="w-6 h-6 text-gray-500 mb-1.5" />
-              <p className="text-[10px] font-bold text-gray-500 max-w-[200px] leading-relaxed px-2">
+              <ShieldAlert className="w-6 h-6 text-[#82877e] mb-1.5" />
+              <p className="text-[10px] font-bold text-[#82877e] max-w-[200px] leading-relaxed px-2">
                 {t.noPendingChanges}
               </p>
             </div>
@@ -613,43 +613,43 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         {/* 3. HUMAN FAMILY STRUCTURE & SUMMARY STATS ONLY */}
         {analysisResult && (
           <div className="space-y-3.5">
-            <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-widest border-s-2 ps-2 border-gray-700">
+            <h4 className="text-[10px] font-black text-[#82877e] uppercase tracking-widest border-s-2 ps-2 border-[#e7e8e0]">
               {t.pedigreeSummaryTitle}
             </h4>
             <div className={`rounded-2xl p-3.5 border divide-y text-xs ${
               isLightMode 
                 ? 'bg-gray-50 border-gray-200 divide-gray-150 text-gray-700' 
-                : 'bg-gray-950/40 border-gray-800/60 divide-gray-800/40 text-gray-300'
+                : 'bg-[#f8f7f3]/40 border-[#e7e8e0]/60 divide-gray-800/40 text-[#657157]'
             }`}>
               
               <div className="flex justify-between items-center py-2">
-                <span className="text-gray-500 font-bold">{t.totalMembers}:</span>
+                <span className="text-[#82877e] font-bold">{t.totalMembers}:</span>
                 <span className="font-extrabold">{analysisResult.nodeCount}</span>
               </div>
 
               <div className="flex justify-between items-center py-2">
-                <span className="text-gray-500 font-bold">{t.relationships}:</span>
+                <span className="text-[#82877e] font-bold">{t.relationships}:</span>
                 <span className="font-extrabold">{analysisResult.edgeCount}</span>
               </div>
 
               {analysisResult.maxGenerationalDepth && (
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-500 font-bold">{t.maxGenerations}:</span>
+                  <span className="text-[#82877e] font-bold">{t.maxGenerations}:</span>
                   <span className="font-extrabold">{analysisResult.maxGenerationalDepth} {t.generations}</span>
                 </div>
               )}
 
               {analysisResult.averageBranchingFactor && (
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-500 font-bold">{t.avgChildren}:</span>
-                  <span className="text-cyan-500 font-bold">{analysisResult.averageBranchingFactor} {t.avgChildrenSuffix}</span>
+                  <span className="text-[#82877e] font-bold">{t.avgChildren}:</span>
+                  <span className="text-[#456352] font-bold">{analysisResult.averageBranchingFactor} {t.avgChildrenSuffix}</span>
                 </div>
               )}
 
               {analysisResult.surnameDiversity && (
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-500 font-bold">{t.surnameDiversity}:</span>
-                  <span className="text-cyan-500 font-bold">{analysisResult.surnameDiversity}</span>
+                  <span className="text-[#82877e] font-bold">{t.surnameDiversity}:</span>
+                  <span className="text-[#456352] font-bold">{analysisResult.surnameDiversity}</span>
                 </div>
               )}
             </div>

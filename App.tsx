@@ -1158,7 +1158,7 @@ const App: React.FC = () => {
   }, [graphData, pendingDeletions, pendingAnonymizations]);
 
   return (
-    <div className={`h-screen flex flex-col font-sans overflow-hidden transition-colors duration-200 ${isLightMode ? 'bg-gray-50 text-gray-800 light-mode' : 'bg-gray-900 text-gray-200'}`} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+    <div className={`h-screen flex flex-col font-sans overflow-hidden transition-colors duration-200 ${isLightMode ? 'bg-gray-50 text-gray-800 light-mode' : 'bg-[#fefefb] text-[#29392f]'}`} dir={lang === 'he' ? 'rtl' : 'ltr'}>
       <style>{`
         /* Overrides for Light Mode */
         .light-mode {
@@ -1167,14 +1167,14 @@ const App: React.FC = () => {
         }
 
         /* Catch any gray backgrounds and convert them to clean white/light surfaces */
-        .light-mode .bg-gray-950,
-        .light-mode [class*="bg-gray-950"],
-        .light-mode .bg-gray-900,
-        .light-mode [class*="bg-gray-900"],
+        .light-mode .bg-[#f8f7f3],
+        .light-mode [class*="bg-[#f8f7f3]"],
+        .light-mode .bg-[#fefefb],
+        .light-mode [class*="bg-[#fefefb]"],
         .light-mode .bg-gray-850,
         .light-mode [class*="bg-gray-850"],
-        .light-mode .bg-gray-800,
-        .light-mode [class*="bg-gray-800"] {
+        .light-mode .bg-[#edf1e9],
+        .light-mode [class*="bg-[#edf1e9]"] {
           background-color: #ffffff !important;
           color: #111827 !important;
         }
@@ -1184,27 +1184,27 @@ const App: React.FC = () => {
           background-color: #f9fafb !important;
         }
 
-        .light-mode .bg-gray-700,
-        .light-mode [class*="bg-gray-700"] {
+        .light-mode .bg-[#e7e8e0],
+        .light-mode [class*="bg-[#e7e8e0]"] {
           background-color: #d1d5db !important;
         }
 
         /* Headers and sub-boxes default to an elegant, softened contrast background */
         .light-mode header,
-        .light-mode [class*="bg-gray-950/60"],
-        .light-mode [class*="bg-gray-950/40"],
-        .light-mode [class*="bg-gray-950/50"] {
+        .light-mode [class*="bg-[#f8f7f3]/60"],
+        .light-mode [class*="bg-[#f8f7f3]/40"],
+        .light-mode [class*="bg-[#f8f7f3]/50"] {
           background-color: rgba(243, 244, 246, 0.9) !important;
           border-color: #d1d5db !important;
         }
 
         /* Borders override */
-        .light-mode .border-gray-800,
-        .light-mode [class*="border-gray-800"],
+        .light-mode .border-[#e7e8e0],
+        .light-mode [class*="border-[#e7e8e0]"],
         .light-mode .border-gray-750,
         .light-mode [class*="border-gray-750"],
-        .light-mode .border-gray-700,
-        .light-mode [class*="border-gray-700"],
+        .light-mode .border-[#e7e8e0],
+        .light-mode [class*="border-[#e7e8e0]"],
         .light-mode .border-gray-850,
         .light-mode [class*="border-gray-850"] {
           border-color: #e5e7eb !important;
@@ -1218,8 +1218,8 @@ const App: React.FC = () => {
         }
 
         /* Specific alert / staging colors */
-        .light-mode .bg-cyan-950/20,
-        .light-mode [class*="bg-cyan-950/20"],
+        .light-mode .bg-[#edf1e9],
+        .light-mode [class*="bg-[#edf1e9]"],
         .light-mode [class*="bg-cyan-950/45"],
         .light-mode .bg-cyan-950/45 {
           background-color: rgba(207, 250, 254, 0.45) !important;
@@ -1245,24 +1245,24 @@ const App: React.FC = () => {
         }
 
         /* Text overrides - dark colors on text for extreme readability */
-        .light-mode .text-gray-100,
-        .light-mode [class*="text-gray-100"],
-        .light-mode .text-gray-200,
-        .light-mode [class*="text-gray-200"],
+        .light-mode .text-[#29392f],
+        .light-mode [class*="text-[#29392f]"],
+        .light-mode .text-[#29392f],
+        .light-mode [class*="text-[#29392f]"],
         .light-mode .text-gray-250,
         .light-mode [class*="text-gray-250"],
         .light-mode .text-gray-350,
         .light-mode [class*="text-gray-350"],
-        .light-mode .text-gray-300,
-        .light-mode [class*="text-gray-300"],
-        .light-mode .text-white {
+        .light-mode .text-[#657157],
+        .light-mode [class*="text-[#657157]"],
+        .light-mode .text-[#29392f] {
           color: #111827 !important;
         }
 
-        .light-mode .text-gray-400,
-        .light-mode [class*="text-gray-400"],
-        .light-mode .text-gray-500,
-        .light-mode [class*="text-gray-500"] {
+        .light-mode .text-[#82877e],
+        .light-mode [class*="text-[#82877e]"],
+        .light-mode .text-[#82877e],
+        .light-mode [class*="text-[#82877e]"] {
           color: #4b5563 !important;
         }
 
@@ -1274,7 +1274,7 @@ const App: React.FC = () => {
 
         /* Soft inputs */
         .light-mode input[type="text"],
-        .light-mode .bg-gray-950 input,
+        .light-mode .bg-[#f8f7f3] input,
         .light-mode input {
           background-color: #f9fafb !important;
           color: #111827 !important;
@@ -1286,8 +1286,8 @@ const App: React.FC = () => {
         }
 
         /* Buttons background & hover states inside light mode */
-        .light-mode button.bg-gray-800,
-        .light-mode button.bg-gray-900,
+        .light-mode button.bg-[#edf1e9],
+        .light-mode button.bg-[#fefefb],
         .light-mode button.bg-gray-850,
         .light-mode button[class*="bg-gray-"] {
           background-color: #f3f4f6 !important;
@@ -1295,20 +1295,20 @@ const App: React.FC = () => {
           border-color: #d1d5db !important;
         }
 
-        .light-mode button.bg-gray-800:hover,
-        .light-mode button.bg-gray-900:hover,
+        .light-mode button.bg-[#edf1e9]:hover,
+        .light-mode button.bg-[#fefefb]:hover,
         .light-mode button.bg-gray-850:hover,
         .light-mode button[class*="bg-gray-"]:hover {
           background-color: #e5e7eb !important;
         }
 
         /* Color accent contrasts adjustment */
-        .light-mode .text-cyan-400,
-        .light-mode [class*="text-cyan-400"],
-        .light-mode .text-cyan-500,
-        .light-mode [class*="text-cyan-500"],
+        .light-mode .text-[#456352],
+        .light-mode [class*="text-[#456352]"],
+        .light-mode .text-[#456352],
+        .light-mode [class*="text-[#456352]"],
         .light-mode .text-cyan-200,
-        .light-mode .text-cyan-300 {
+        .light-mode .text-[#456352] {
           color: #0369a1 !important;
         }
 
@@ -1401,32 +1401,32 @@ const App: React.FC = () => {
           background-color: #06b6d4 !important;
         }
 
-        .light-mode .status-indicator-badge .bg-cyan-500 {
+        .light-mode .status-indicator-badge .bg-[#ac694c] {
           background-color: #0891b2 !important;
         }
       `}</style>
-      <header className="bg-gray-800 bg-opacity-70 backdrop-blur-sm shadow-md px-4 py-3 z-10 border-b border-gray-700/80 flex-shrink-0">
+      <header className="bg-[#edf1e9] bg-opacity-70 backdrop-blur-sm shadow-md px-4 py-3 z-10 border-b border-[#e7e8e0]/80 flex-shrink-0">
         <div className="container mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <GraphIcon className="w-8 h-8 text-cyan-400" />
+            <GraphIcon className="w-8 h-8 text-[#456352]" />
             <div className="flex items-baseline gap-2">
               <h1 className="text-2xl font-black bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">GedShield</h1>
-              <span className="hidden md:inline h-4 w-[1px] bg-gray-700 mx-1"></span>
-              <span className="hidden md:inline text-xs text-gray-400 font-semibold">{t.appSubtitle}</span>
+              <span className="hidden md:inline h-4 w-[1px] bg-[#e7e8e0] mx-1"></span>
+              <span className="hidden md:inline text-xs text-[#82877e] font-semibold">{t.appSubtitle}</span>
             </div>
             
             {parsedStats && (
-              <div className="hidden lg:flex items-center gap-3.5 bg-gray-950/60 px-4 py-1.5 rounded-full border border-gray-700/60 text-xs font-semibold g-tree-stats">
+              <div className="hidden lg:flex items-center gap-3.5 bg-[#f8f7f3]/60 px-4 py-1.5 rounded-full border border-[#e7e8e0]/60 text-xs font-semibold g-tree-stats">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-gray-400">{t.people}:</span>
+                  <span className="text-[#82877e]">{t.people}:</span>
                   <span className="font-extrabold text-teal-400 font-mono text-sm">{parsedStats.peopleCount}</span>
                 </div>
-                <div className="w-1 h-1 rounded-full bg-gray-700 g-dot"></div>
+                <div className="w-1 h-1 rounded-full bg-[#e7e8e0] g-dot"></div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-gray-400">{t.families}:</span>
+                  <span className="text-[#82877e]">{t.families}:</span>
                   <span className="font-extrabold text-pink-400 font-mono text-sm">{parsedStats.familyCount}</span>
                 </div>
-                <div className="w-1 h-1 rounded-full bg-gray-700 g-dot"></div>
+                <div className="w-1 h-1 rounded-full bg-[#e7e8e0] g-dot"></div>
                 <div className="flex items-center gap-1.5">
                   <span className="text-gray-250">{t.connectedComponents}:</span>
                   <span className="font-extrabold text-amber-400 font-mono text-sm">{parsedStats.componentsCount}</span>
@@ -1441,7 +1441,7 @@ const App: React.FC = () => {
               className={`p-1.5 px-3 rounded-lg border transition-all duration-200 flex items-center justify-center gap-1.5 text-[11px] font-black active:scale-95 cursor-pointer select-none ${
                 isLightMode 
                   ? 'bg-white hover:bg-gray-100 text-gray-800 border-gray-300 shadow-sm' 
-                  : 'bg-gray-850 hover:bg-gray-800 text-cyan-400 border-gray-750'
+                  : 'bg-gray-850 hover:bg-[#edf1e9] text-[#456352] border-gray-750'
               }`}
               title={lang === 'he' ? "Switch to English" : "עבור לעברית"}
             >
@@ -1454,7 +1454,7 @@ const App: React.FC = () => {
               className={`p-1.5 px-3 rounded-lg border transition-all duration-200 flex items-center justify-center gap-2 text-[11px] font-black active:scale-95 cursor-pointer select-none ${
                 isLightMode 
                   ? 'bg-white hover:bg-gray-100 text-gray-800 border-gray-300 shadow-sm' 
-                  : 'bg-gray-850 hover:bg-gray-800 text-yellow-400 border-gray-750'
+                  : 'bg-gray-850 hover:bg-[#edf1e9] text-yellow-400 border-gray-750'
               }`}
               title={isLightMode ? t.switchToDark : t.switchToLight}
             >
@@ -1462,7 +1462,7 @@ const App: React.FC = () => {
               <span>{isLightMode ? t.darkMode : t.lightMode}</span>
             </button>
             {parsedStats && (
-              <div className="flex lg:hidden items-center gap-2.5 text-[11px] font-semibold text-gray-300 bg-gray-950/40 px-3 py-1 rounded-md border border-gray-800 g-tree-stats-mobile">
+              <div className="flex lg:hidden items-center gap-2.5 text-[11px] font-semibold text-[#657157] bg-[#f8f7f3]/40 px-3 py-1 rounded-md border border-[#e7e8e0] g-tree-stats-mobile">
                 <span>{t.people}: <b className="text-teal-400 font-mono">{parsedStats.peopleCount}</b></span>
                 <span className="text-gray-700 g-dot">•</span>
                 <span>{t.families}: <b className="text-pink-400 font-mono">{parsedStats.familyCount}</b></span>
@@ -1528,7 +1528,7 @@ const App: React.FC = () => {
             lang={lang}
           />
         </div>
-        <div className={`flex-grow flex-1 rounded-lg shadow-2xl overflow-hidden relative border h-full min-h-[300px] transition-colors duration-200 ${isLightMode ? 'bg-gray-100 border-gray-200' : 'bg-gray-850 border-gray-700'}`}>
+        <div className={`flex-grow flex-1 rounded-lg shadow-2xl overflow-hidden relative border h-full min-h-[300px] transition-colors duration-200 ${isLightMode ? 'bg-gray-100 border-gray-200' : 'bg-gray-850 border-[#e7e8e0]'}`}>
           {graphData ? (
             <>
               <GraphVisualizer
@@ -1564,8 +1564,8 @@ const App: React.FC = () => {
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-center p-8">
               <UploadIcon className="w-24 h-24 text-gray-600 mb-6" />
-              <h2 className="text-2xl font-semibold text-gray-300">{t.readyToDisplay}</h2>
-              <p className="mt-2 text-gray-400 max-w-md">{t.uploadPrompt}</p>
+              <h2 className="text-2xl font-semibold text-[#657157]">{t.readyToDisplay}</h2>
+              <p className="mt-2 text-[#82877e] max-w-md">{t.uploadPrompt}</p>
             </div>
           )}
         </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,18 +7,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, icon, variant = 'primary', ...props }) => {
-  const baseStyles = "w-full flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.98]";
-  
+  const baseStyles =
+    'w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold tracking-wide rounded-xl shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#f8f7f3] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]';
+
   const variants = {
-    primary: "bg-cyan-600 text-white hover:bg-cyan-500 hover:shadow-cyan-900/40 focus:ring-cyan-500",
-    secondary: "bg-gray-700 text-gray-200 border border-gray-600 hover:bg-gray-600 hover:text-white focus:ring-gray-500"
+    primary:
+      'bg-[#ac694c] text-white hover:bg-[#93583f] focus:ring-[#b47e59] shadow-[0_2px_8px_#ac694c33]',
+    secondary:
+      'bg-[#edf1e9] text-[#456352] border border-[#d6e2cd] hover:bg-[#e9f0e5] focus:ring-[#456352]',
   };
 
   return (
-    <button
-      {...props}
-      className={`${baseStyles} ${variants[variant]}`}
-    >
+    <button {...props} className={`${baseStyles} ${variants[variant]}`}>
       {icon}
       {children}
     </button>
