@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { GraphData, AnalysisResult, NodeObject, NodeAnalysisResult } from './types';
 import { parseEdgeList, parseGedcom, exportToGedcom, getGraphStats } from './services/graphService';
+import { saveSharedExport, loadSharedExport, hasSharedExport, formatSharedSummary } from './services/baobabSharedStorage';
 import ControlPanel from './components/ControlPanel';
 import GraphVisualizer from './components/GraphVisualizer';
 import GraphLegend from './components/GraphLegend';
@@ -1035,7 +1036,17 @@ const App: React.FC = () => {
         const data = isGedcomFile ? parseGedcom(content, false) : parseEdgeList(content);
         setGraphData(data);
         const stats = getGraphStats(data);
-        setStatusMessage(`נטען בהצלחה: ${file.name} (${stats.peopleCount} אנשים, ${stats.familyCount} משפחות, ${stats.componentsCount} רכיבי קשירות)`);
+        setStatusMessage(`נטען בהצלחה: ${file.name} (${stats.peopleCount} אנשים, ${stats.familyCount} משפחות, ${stats.componentsCount} רכיבי קשירות`);
+        if (isGedcomFile) {
+          try {
+            saveSharedExport({
+              source: 'GedShield',
+              filename: file.name,
+              gedcom: content,
+              meta: { personCount: stats.peopleCount, familyCount: stats.familyCount, title: file.name },
+            });
+          } catch (_) {}
+        }
       } catch (err) { setError('שגיאה בניתוח הקובץ.'); }
     };
     reader.readAsText(file);
@@ -1050,6 +1061,40 @@ const App: React.FC = () => {
     setGraphData(data);
     const stats = getGraphStats(data);
     setStatusMessage(`נטען בהצלחה: ${name} (${stats.peopleCount} אנשים, ${stats.familyCount} משפחות, ${stats.componentsCount} רכיבי קשירות)`);
+  }, []);
+
+  const handleLoadShared = useCallback(() => {
+    const shared = loadSharedExport();
+    if (!shared?.gedcom) {
+      setError('אין נתונים משותפים לטעינה.');
+      return;
+    }
+    setError(null); setAnalysisResult(null); setSelectedNode(null); setAiSummary(null);
+    try {
+      const content = shared.gedcom;
+      setRawFileContent(content);
+      setIsGedcom(true);
+      const data = parseGedcom(content, false);
+      setGraphData(data);
+      const stats = getGraphStats(data);
+      setStatusMessage(`נטען מהשיתוף: ${shared.filename || 'shared.ged'} (${stats.peopleCount} אנשים)`);
+    } catch (err) {
+      setError('שגיאה בטעינת הנתונים המשותפים.');
+    }
+  }, []);
+
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('baobab') === 'shared') {
+        handleLoadShared();
+        params.delete('baobab');
+        const next = params.toString();
+        window.history.replaceState({}, '', window.location.pathname + (next ? '?' + next : '') + window.location.hash);
+      }
+    } catch (_) {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAnalyze = useCallback(() => {
