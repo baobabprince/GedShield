@@ -1495,7 +1495,16 @@ const App: React.FC = () => {
           </div>
           
           <div className="flex items-center justify-between sm:justify-end gap-3 flex-wrap">
-            <button
+                          <a
+                href="https://baobabprince.github.io/anafim/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs px-2.5 py-1.5 rounded-md border border-[#e7e8e0] bg-[#fefefb] text-[#456352] font-semibold hover:bg-[#edf1e9] transition-colors no-underline"
+                title={lang === 'he' ? 'פתיחת אותו אילן במבט משפחתי' : 'Open the same tree in family view'}
+              >
+                {lang === 'he' ? 'אילן המשפחה' : 'Family tree'}
+              </a>
+<button
               onClick={() => setLang(l => l === 'he' ? 'en' : 'he')}
               className={`p-1.5 px-3 rounded-lg border transition-all duration-200 flex items-center justify-center gap-1.5 text-[11px] font-black active:scale-95 cursor-pointer select-none ${
                 isLightMode 
