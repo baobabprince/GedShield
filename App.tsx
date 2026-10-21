@@ -1085,15 +1085,29 @@ const App: React.FC = () => {
 
 
   useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('baobab') === 'shared') {
+    let cancelled = false;
+    const run = () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('baobab') !== 'shared') return;
+        const shared = loadSharedExport();
+        if (!shared?.gedcom) {
+          setStatusMessage('אין נתונים משותפים לטעינה. שמרו מתוך ענפים ואז פתחו שוב.');
+          return;
+        }
+        if (cancelled) return;
         handleLoadShared();
         params.delete('baobab');
         const next = params.toString();
         window.history.replaceState({}, '', window.location.pathname + (next ? '?' + next : '') + window.location.hash);
+      } catch (e) {
+        console.error(e);
+        setStatusMessage('טעינה מהשיתוף נכשלה');
       }
-    } catch (_) {}
+    };
+    // Defer so state hooks and parse are ready
+    const id = window.setTimeout(run, 50);
+    return () => { cancelled = true; window.clearTimeout(id); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
